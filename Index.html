@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रेष्ठकौशल - Supreme Mastery</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(to bottom, #f0f8ff, #d0e8ff); color: #333; min-height: 100vh; }
+        header { background: linear-gradient(135deg, #007bff, #004085); color: white; padding: 60px 20px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        header h1 { font-size: 3.8em; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); }
+        header p { font-size: 1.6em; margin-top: 15px; }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 30px; background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+
+        .about-section { background: linear-gradient(to right, #e3f2fd, #bbdefb); padding: 50px; border-radius: 20px; margin: 50px 0; text-align: center; }
+        .about-section h2 { font-size: 2.5em; color: #007bff; margin-bottom: 20px; }
+        .about-section p { font-size: 1.3em; line-height: 1.8; max-width: 900px; margin: 0 auto 20px; }
+
+        .start-buttons { text-align: center; margin: 60px 0; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .start-btn { padding: 25px 70px; font-size: 2.2em; border: none; border-radius: 20px; cursor: pointer; flex: 1; min-width: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        #start-mains { background: #007bff; color: white; }
+        #start-adv { background: #dc3545; color: white; }
+        #start-mhcet { background: #fd7e14; color: white; }
+
+        .exam-container { display: flex; gap: 40px; margin-top: 30px; }
+        .question-area { flex: 3; min-width: 600px; }
+        .palette-area { flex: 1; min-width: 300px; background: #f8f9fa; padding: 25px; border-radius: 15px; position: sticky; top: 20px; align-self: start; }
+        .palette-title { text-align: center; font-size: 1.6em; color: #007bff; font-weight: bold; margin-bottom: 20px; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .palette-btn {
+            width: 50px; height: 50px; border-radius: 12px; font-size: 1.1em; font-weight: bold;
+            color: white; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .palette-btn:hover { transform: scale(1.1); }
+        .not-visited { background: #6c757d; } /* Grey */
+        .not-answered { background: #dc3545; } /* Red */
+        .answered { background: #28a745; } /* Green */
+        .review { background: #ffc107; color: #212529; } /* Yellow */
+        .review-answered { background: #6f42c1; } /* Purple */
+        .current { border: 5px solid #007bff; transform: scale(1.15); box-shadow: 0 0 20px rgba(0,123,255,0.8); }
+
+        .legend { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 1.1em; }
+        .legend-item { display: flex; align-items: center; gap: 10px; }
+        .legend-color { width: 25px; height: 25px; border-radius: 8px; }
+
+        .question { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-left: 8px solid #007bff; margin-bottom: 30px; }
+        .question strong { font-size: 1.4em; color: #0056b3; }
+        .options label { display: block; margin: 20px 0; padding: 15px; background: #f1f8ff; border-radius: 10px; font-size: 1.2em; cursor: pointer; }
+        .numerical input { padding: 15px; width: 300px; font-size: 1.3em; border: 3px solid #007bff; border-radius: 10px; text-align: center; }
+
+        .navigation-btns { display: flex; justify-content: space-between; margin: 40px 0; }
+        .nav-btn { padding: 15px 40px; font-size: 1.3em; border-radius: 10px; border: none; cursor: pointer; }
+        #prev-btn { background: #6c757d; color: white; }
+        #next-btn { background: #007bff; color: white; }
+        #mark-review { background: #ffc107; color: #212529; }
+        #clear-btn { background: #dc3545; color: white; }
+
+        #submit-final { display: block; margin: 50px auto; padding: 20px 80px; font-size: 1.8em; background: linear-gradient(to right, #28a745, #20c997); color: white; border: none; border-radius: 15px; cursor: pointer; }
+
+        .charts-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin: 60px 0; }
+        .chart-box { flex: 1; min-width: 400px; max-width: 600px; background: #f8f9fa; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+
+        table { width: 100%; border-collapse: collapse; margin: 40px 0; }
+        th, td { padding: 18px; text-align: center; border: 1px solid #ddd; }
+        th { background: #007bff; color: white; }
+        .correct-row { background-color: #d4edda !important; color: #155724; font-weight: bold; }
+        .incorrect-row { background-color: #f8d7da !important; color: #721c24; font-weight: bold; }
+        .unattempted-row { background-color: #fff3cd !important; color: #856404; font-weight: bold; }
+
+        footer { text-align: center; padding: 50px; background: linear-gradient(135deg, #007bff, #004085); color: white; margin-top: 100px; font-size: 1.2em; }
+
+        #main-page { display: block; }
+        #exam-page, #result-analysis { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>श्रेष्ठकौशल</h1>
+        <p>Supreme Mastery through Knowledge</p>
+    </header>
+
+    <div class="container" id="main-page">
+        <div class="about-section">
+            <h2>श्रेष्ठकौशल – Excellence in Skills</h2>
+            <p>Inspired by Vedic wisdom, ShreshthaKaushal means "Supreme Mastery".</p>
+            <p>This portal helps JEE & MHT CET aspirants achieve excellence through realistic mock tests and detailed analysis.</p>
+            <p>Our mission: Quality education for all – especially supporting needy students.</p>
+        </div>
+
+        <div class="start-buttons">
+            <button class="start-btn" id="start-mains">Start JEE Mains Mock Test</button>
+            <button class="start-btn" id="start-adv">Start JEE Advanced Mock Test</button>
+            <button class="start-btn" id="start-mhcet">Start MHT CET Mock Test</button>
+        </div>
+    </div>
+
+    <div class="container" id="exam-page">
+        <div class="exam-container">
+            <div class="question-area">
+                <h2 id="exam-title" style="color:#007bff;"></h2>
+                <div id="question-container"></div>
+
+                <div class="navigation-btns">
+                    <button class="nav-btn" id="prev-btn">← Previous</button>
+                    <div>
+                        <button class="nav-btn" id="clear-btn">Clear Response</button>
+                        <button class="nav-btn" id="mark-review">Mark for Review</button>
+                    </div>
+                    <button class="nav-btn" id="next-btn">Next →</button>
+                </div>
+
+                <button id="submit-final">Submit Exam & View Analysis</button>
+            </div>
+
+            <div class="palette-area">
+                <div class="palette-title">Question Palette</div>
+                <div class="palette-grid" id="palette-grid"></div>
+
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-color not-visited"></div><span>Not Visited</span></div>
+                    <div class="legend-item"><div class="legend-color not-answered"></div><span>Not Answered</span></div>
+                    <div class="legend-item"><div class="legend-color answered"></div><span>Answered</span></div>
+                    <div class="legend-item"><div class="legend-color review"></div><span>Marked for Review</span></div>
+                    <div class="legend-item"><div class="legend-color review-answered"></div><span>Review + Answered</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background:#007bff;"></div><span>Current Question</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="result-analysis"></div>
+
+    <footer>
+        <p>© 2025 • श्रेष्ठकौशल – Inspired by Vedic Excellence</p>
+    </footer>
+
+    <script>
+        let allQuestions = [];
+        let currentIndex = 0;
+        let responses = {};
+        let chartInstances = { bar: null, pie: null };
+
+        const questionSets = {
+            mains: {
+                Physics: 'questions/mains/physics.json',
+                Chemistry: 'questions/mains/chemistry.json',
+                Mathematics: 'questions/mains/mathematics.json'
+            },
+            advanced: {
+                Physics: 'questions/advanced/physics.json',
+                Chemistry: 'questions/advanced/chemistry.json',
+                Mathematics: 'questions/advanced/mathematics.json'
+            },
+            mhcet: {
+                Physics: 'questions/mhcet/physics.json',
+                Chemistry: 'questions/mhcet/chemistry.json',
+                Mathematics: 'questions/mhcet/mathematics.json'
+            }
+        };
+
+        async function loadQuestions(type) {
+            const paths = questionSets[type];
+            try {
+                const [phy, chem, math] = await Promise.all([
+                    fetch(paths.Physics).then(r => r.json()),
+                    fetch(paths.Chemistry).then(r => r.json()),
+                    fetch(paths.Mathematics).then(r => r.json())
+                ]);
+
+                allQuestions = [];
+                let id = 1;
+                ['Physics', 'Chemistry', 'Mathematics'].forEach((sub, index) => {
+                    const data = index === 0 ? phy : index === 1 ? chem : math;
+                    data.forEach(q => allQuestions.push({ ...q, globalId: id++, subject: sub }));
+                });
+
+                document.getElementById('main-page').style.display = 'none';
+                document.getElementById('exam-page').style.display = 'block';
+                document.getElementById('exam-title').textContent = 
+                    type === 'mains' ? 'JEE Mains Mock Test' : 
+                    type === 'advanced' ? 'JEE Advanced Mock Test' : 'MHT CET Mock Test';
+
+                currentIndex = 0;
+                responses = {};
+                renderQuestion();
+                renderPalette();
+            } catch (err) {
+                alert("Error loading questions. Check JSON files in /questions/ folder.");
+                console.error(err);
+            }
+        }
+
+        document.getElementById('start-mains').onclick = () => loadQuestions('mains');
+        document.getElementById('start-adv').onclick = () => loadQuestions('advanced');
+        document.getElementById('start-mhcet').onclick = () => loadQuestions('mhcet');
+
+        function renderQuestion() {
+            if (allQuestions.length === 0) {
+                document.getElementById('question-container').innerHTML = '<p style="text-align:center;color:red;font-size:1.5em;">No questions loaded. Check JSON files.</p>';
+                return;
+            }
+
+            const q = allQuestions[currentIndex];
+            const container = document.getElementById('question-container');
+            let html = `<div class="question">
+                <strong>Q${q.globalId} [${q.subject}]</strong>
+                <p>${q.question}</p>`;
+
+            if (q.type === 'mcq' || q.type === 'single') {
+                html += '<div class="options">';
+                q.options.forEach((opt, i) => {
+                    html += `<label><input type="radio" name="q${q.globalId}" value="${opt}">
+                        ${String.fromCharCode(65 + i)}) ${opt}</label>`;
+                });
+                html += '</div>';
+            } else if (q.type === 'multiple') {
+                html += '<div class="options">';
+                q.options.forEach((opt, i) => {
+                    html += `<label><input type="checkbox" name="q${q.globalId}" value="${opt}">
+                        ${String.fromCharCode(65 + i)}) ${opt}</label>`;
+                });
+                html += '</div>';
+            } else if (q.type === 'numerical') {
+                html += '<div class="numerical"><input type="number" name="q' + q.globalId + '" step="0.01" placeholder="Enter answer"></div>';
+            }
+
+            html += '</div>';
+            container.innerHTML = html;
+
+            // Restore answer
+            if (responses[q.globalId]) {
+                const saved = responses[q.globalId];
+                if (q.type === 'multiple') {
+                    saved.answer.forEach(v => {
+                        const el = container.querySelector(`input[value="${v}"]`);
+                        if (el) el.checked = true;
+                    });
+                } else if (q.type === 'numerical') {
+                    container.querySelector('input[type="number"]').value = saved.answer;
+                } else if (saved.answer) {
+                    const el = container.querySelector(`input[value="${saved.answer}"]`);
+                    if (el) el.checked = true;
+                }
+            }
+
+            renderPalette();
+        }
+
+        function saveCurrentResponse() {
+            if (allQuestions.length === 0) return;
+            const q = allQuestions[currentIndex];
+            let answer = null;
+
+            if (q.type === 'multiple') {
+                answer = Array.from(document.querySelectorAll(`input[name="q${q.globalId}"]:checked`)).map(el => el.value);
+            } else if (q.type === 'numerical') {
+                answer = document.querySelector(`input[name="q${q.globalId}"]`)?.value.trim() || '';
+            } else {
+                answer = document.querySelector(`input[name="q${q.globalId}"]:checked`)?.value || null;
+            }
+
+            if (answer && (Array.isArray(answer) ? answer.length > 0 : answer !== '')) {
+                responses[q.globalId] = { answer, status: responses[q.globalId]?.status === 'review' ? 'review-answered' : 'answered' };
+            } else {
+                delete responses[q.globalId];
+            }
+        }
+
+        document.getElementById('prev-btn').onclick = () => {
+            saveCurrentResponse();
+            currentIndex = Math.max(0, currentIndex - 1);
+            renderQuestion();
+        };
+
+        document.getElementById('next-btn').onclick = () => {
+            saveCurrentResponse();
+            currentIndex = Math.min(allQuestions.length - 1, currentIndex + 1);
+            renderQuestion();
+        };
+
+        document.getElementById('clear-btn').onclick = () => {
+            delete responses[allQuestions[currentIndex].globalId];
+            renderQuestion();
+        };
+
+        document.getElementById('mark-review').onclick = () => {
+            const id = allQuestions[currentIndex].globalId;
+            const hasAns = !!responses[id];
+            responses[id] = { answer: responses[id]?.answer || null, status: hasAns ? 'review-answered' : 'review' };
+            renderPalette();
+        };
+
+        function goToQuestion(idx) {
+            saveCurrentResponse();
+            currentIndex = idx;
+            renderQuestion();
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('palette-grid');
+            grid.innerHTML = '';
+            allQuestions.forEach((q, i) => {
+                let status = 'not-visited';
+                if (responses[q.globalId]) {
+                    status = responses[q.globalId].status || 'answered';
+                } else if (i < currentIndex) {
+                    status = 'not-answered';
+                }
+                if (i === currentIndex) status = 'current';
+
+                const btn = document.createElement('button');
+                btn.className = `palette-btn ${status}`;
+                btn.textContent = q.globalId;
+                btn.onclick = () => goToQuestion(i);
+                grid.appendChild(btn);
+            });
+        }
+
+        document.getElementById('submit-final').onclick = finalSubmit;
+
+        function finalSubmit() {
+            if (!confirm("Are you sure you want to submit the exam?")) return;
+            saveCurrentResponse();
+
+            let totalScore = 0;
+            let subjectStats = {Physics: {score:0, correct:0, attempted:0, totalQ:0}, Chemistry: {score:0, correct:0, attempted:0, totalQ:0}, Mathematics: {score:0, correct:0, attempted:0, totalQ:0}};
+            let rows = '';
+            let totalQuestions = allQuestions.length;
+
+            allQuestions.forEach(q => subjectStats[q.subject].totalQ++);
+
+            allQuestions.forEach(q => {
+                const res = responses[q.globalId];
+                let userAns = res ? res.answer : null;
+                let correct = false;
+
+                if (q.type === 'multiple') {
+                    correct = res && arraysEqual(userAns || [], Array.isArray(q.correct) ? q.correct : [q.correct]);
+                } else if (q.type === 'numerical') {
+                    correct = res && (Math.abs(parseFloat(userAns) - parseFloat(q.correct)) < 0.05 || userAns === q.correct);
+                } else {
+                    correct = userAns === q.correct;
+                }
+
+                if (res) subjectStats[q.subject].attempted++;
+                if (correct) {
+                    totalScore += 4;
+                    subjectStats[q.subject].score += 4;
+                    subjectStats[q.subject].correct++;
+                } else if (res && q.type !== 'numerical') {
+                    totalScore -= 1;
+                    subjectStats[q.subject].score -= 1;
+                }
+
+                const rowClass = correct ? 'correct-row' : res ? 'incorrect-row' : 'unattempted-row';
+                rows += `<tr class="${rowClass}">
+                    <td>Q${q.globalId}</td><td>${q.subject}</td><td>${correct ? 'Correct (+4)' : res ? 'Wrong' : 'Unattempted'}</td>
+                    <td>${Array.isArray(q.correct) ? q.correct.join(', ') : q.correct}</td>
+                    <td>${Array.isArray(userAns) ? userAns.join(', ') : (userAns || '-')}</td>
+                    <td>${q.explanation || '-'}</td>
+                </tr>`;
+            });
+
+            const overallPercent = ((totalScore / (totalQuestions * 4)) * 100).toFixed(2);
+
+            document.getElementById('exam-page').style.display = 'none';
+            document.getElementById('result-analysis').style.display = 'block';
+            document.getElementById('result-analysis').innerHTML = `
+                <h2 style="text-align:center;color:#007bff;">Exam Submitted Successfully!</h2>
+                <p style="text-align:center;font-size:1.8em;"><strong>Total Score: ${totalScore} / ${totalQuestions * 4} (${overallPercent}%)</strong></p>
+
+                <h3 style="color:#007bff;">Subject-wise Performance</h3>
+                <table>
+                    <tr><th>Subject</th><th>Marks Obtained</th><th>Maximum Marks</th><th>Percentage</th><th>Correct</th><th>Attempted</th></tr>
+                    ${['Physics','Chemistry','Mathematics'].map(s => {
+                        const st = subjectStats[s];
+                        const max = st.totalQ * 4;
+                        const perc = max > 0 ? ((st.score / max) * 100).toFixed(1) : '0.0';
+                        return `<tr><td>${s}</td><td>${st.score}</td><td>${max}</td><td>${perc}%</td><td>${st.correct}</td><td>${st.attempted}</td></tr>`;
+                    }).join('')}
+                </table>
+
+                <div class="charts-container">
+                    <div class="chart-box">
+                        <h3>Performance (% of Max Marks)</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Marks Distribution</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+
+                <h3 style="color:#007bff;">Question-wise Review</h3>
+                <table>
+                    <tr><th>Q No.</th><th>Subject</th><th>Status</th><th>Correct Answer</th><th>Your Answer</th><th>Explanation</th></tr>
+                    ${rows}
+                </table>
+            `;
+
+            // Charts
+            const barCtx = document.getElementById('barChart').getContext('2d');
+            if (chartInstances.bar) chartInstances.bar.destroy();
+            chartInstances.bar = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Physics', 'Chemistry', 'Mathematics'],
+                    datasets: [{
+                        label: '% of Max Marks',
+                        data: ['Physics','Chemistry','Mathematics'].map(s => {
+                            const st = subjectStats[s];
+                            return st.totalQ > 0 ? ((st.score / (st.totalQ * 4)) * 100).toFixed(1) : 0;
+                        }),
+                        backgroundColor: ['#007bff', '#28a745', '#dc3545']
+                    }]
+                },
+                options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } } }
+            });
+
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            if (chartInstances.pie) chartInstances.pie.destroy();
+            chartInstances.pie = new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Physics', 'Chemistry', 'Mathematics'],
+                    datasets: [{
+                        data: ['Physics','Chemistry','Mathematics'].map(s => subjectStats[s].score),
+                        backgroundColor: ['#007bff', '#28a745', '#dc3545']
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            a = a.slice().sort();
+            b = b.slice().sort();
+            return a.every((v, i) => v === b[i]);
+        }
+    </script>
+</body>
+</html>
