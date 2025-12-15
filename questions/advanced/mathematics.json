@@ -1,0 +1,32 @@
+[
+  {
+    "id": 9,
+    "type": "mcq",
+    "question": "lim(x→0) (sin x)/x =",
+    "options": ["0", "1", "∞", "-1"],
+    "correct": "1",
+    "explanation": "Standard limit"
+  },
+  {
+    "id": 10,
+    "type": "mcq",
+    "question": "Number of relations on set {1,2,3}:",
+    "options": ["8", "9", "512", "64"],
+    "correct": "512",
+    "explanation": "2^(3×3) = 512"
+  },
+  {
+    "id": 11,
+    "type": "numerical",
+    "question": "∫₀¹ x² dx =",
+    "correct": "0.33",
+    "explanation": "1/3 ≈ 0.33"
+  },
+  {
+    "id": 12,
+    "type": "numerical",
+    "question": "Sum of coefficients in (x+1)¹⁰:",
+    "correct": "2048",
+    "explanation": "2¹⁰ = 2048"
+  }
+]

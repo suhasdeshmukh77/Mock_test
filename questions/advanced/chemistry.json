@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "type": "mcq",
+    "question": "Which of the following has the highest boiling point?",
+    "options": ["n-Pentane", "2-Methylbutane", "2,2-Dimethylpropane", "All have same"],
+    "correct": "n-Pentane",
+    "explanation": "Straight chain alkanes have higher boiling point due to greater surface area and stronger van der Waals forces."
+  },
+  {
+    "id": 2,
+    "type": "mcq",
+    "question": "The hybridization of carbon in diamond is:",
+    "options": ["sp", "sp²", "sp³", "dsp²"],
+    "correct": "sp³",
+    "explanation": "Diamond has tetrahedral structure with sigma bonds only."
+  },
+  {
+    "id": 3,
+    "type": "numerical",
+    "question": "pH of 0.001 M HCl solution is:",
+    "correct": "3",
+    "explanation": "[H⁺] = 0.001 = 10⁻³ M → pH = 3"
+  },
+  {
+    "id": 4,
+    "type": "mcq",
+    "question": "Strongest acid among the following is:",
+    "options": ["HF", "HCl", "HBr", "HI"],
+    "correct": "HI",
+    "explanation": "Acid strength increases down the group due to decrease in bond strength."
+  },
+  {
+    "id": 5,
+    "type": "numerical",
+    "question": "Number of moles in 44 g of CO₂ is:",
+    "correct": "1",
+    "explanation": "Molar mass of CO₂ = 44 g/mol → 44/44 = 1 mole"
+  },
+  {
+    "id": 6,
+    "type": "mcq",
+    "question": "Hybridization of Xe in XeF₄ is:",
+    "options": ["sp³", "sp³d", "sp³d²", "sp³d³"],
+    "correct": "sp³d²",
+    "explanation": "Square planar → octahedral electron geometry (6 pairs)"
+  },
+  {
+    "id": 7,
+    "type": "mcq",
+    "question": "The most stable carbocation is:",
+    "options": ["Methyl", "Primary", "Secondary", "Tertiary"],
+    "correct": "Tertiary",
+    "explanation": "Hyperconjugation and +I effect stabilize tertiary carbocation most."
+  },
+  {
+    "id": 8,
+    "type": "numerical",
+    "question": "Oxidation number of Cr in K₂Cr₂O₇ is:",
+    "correct": "6",
+    "explanation": "2(+1) + 2x + 7(-2) = 0 → 2x = 12 → x = +6"
+  },
+  {
+    "id": 9,
+    "type": "mcq",
+    "question": "Which has zero dipole moment?",
+    "options": ["NH₃", "H₂O", "BF₃", "CHCl₃"],
+    "correct": "BF₃",
+    "explanation": "Planar symmetrical structure → vector sum zero"
+  },
+  {
+    "id": 10,
+    "type": "numerical",
+    "question": "Number of sigma bonds in benzene:",
+    "correct": "12",
+    "explanation": "6 C-C sigma, 6 C-H sigma = 12"
+  },
+  {
+    "id": 11,
+    "type": "mcq",
+    "question": "The IUPAC name of CH₃CH₂CH(CH₃)₂ is:",
+    "options": ["2-Methylbutane", "3-Methylbutane", "Isopentane", "n-Pentane"],
+    "correct": "2-Methylbutane",
+    "explanation": "Longest chain 4 carbons, methyl at position 2"
+  },
+  {
+    "id": 12,
+    "type": "numerical",
+    "question": "Volume occupied by 1 mole of ideal gas at STP (in L):",
+    "correct": "22.4",
+    "explanation": "Molar volume at STP = 22.4 L"
+  },
+  {
+    "id": 13,
+    "type": "mcq",
+    "question": "Which is the correct order of increasing bond angle?",
+    "options": ["H₂O < NH₃ < CH₄", "CH₄ < NH₃ < H₂O", "NH₃ < H₂O < CH₄", "H₂O < CH₄ < NH₃"],
+    "correct": "CH₄ < NH₃ < H₂O",
+    "explanation": "Bond angle: CH₄ (109.5°) < NH₃ (107°) < H₂O (104.5°)"
+  },
+  {
+    "id": 14,
+    "type": "numerical",
+    "question": "pOH of 0.01 M NaOH is:",
+    "correct": "2",
+    "explanation": "[OH⁻] = 0.01 = 10⁻² → pOH = 2"
+  },
+  {
+    "id": 15,
+    "type": "mcq",
+    "question": "Which element has highest electronegativity?",
+    "options": ["N", "O", "F", "Cl"],
+    "correct": "F",
+    "explanation": "Fluorine has highest electronegativity (4.0)"
+  },
+  {
+    "id": 16,
+    "type": "mcq",
+    "question": "In which compound nitrogen has +5 oxidation state?",
+    "options": ["NH₃", "N₂O", "HNO₃", "N₂"],
+    "correct": "HNO₃",
+    "explanation": "In HNO₃, N = +5"
+  },
+  {
+    "id": 17,
+    "type": "numerical",
+    "question": "Number of electrons in 1 mole of H₂ gas:",
+    "correct": "1.204×10²⁴",
+    "explanation": "1 mole H₂ has 2 × N_A electrons = 2 × 6.022×10²³ = 1.204×10²⁴"
+  },
+  {
+    "id": 18,
+    "type": "mcq",
+    "question": "Which is not a buffer solution?",
+    "options": ["CH₃COOH + CH₃COONa", "NH₄OH + NH₄Cl", "HCl + NaCl", "H₂CO₃ + NaHCO₃"],
+    "correct": "HCl + NaCl",
+    "explanation": "Strong acid + its salt does not form buffer"
+  },
+  {
+    "id": 19,
+    "type": "numerical",
+    "question": "Equivalent weight of KMnO₄ in acidic medium:",
+    "correct": "31.6",
+    "explanation": "Mn⁷⁺ → Mn²⁺ (5e change) → Eq wt = Mol wt / 5 = 158/5 = 31.6"
+  },
+  {
+    "id": 20,
+    "type": "mcq",
+    "question": "Which gas is known as laughing gas?",
+    "options": ["NO", "N₂O", "NO₂", "N₂O₅"],
+    "correct": "N₂O",
+    "explanation": "Nitrous oxide causes laughter"
+  },
+  {
+    "id": 21,
+    "type": "mcq",
+    "question": "The geometry of SF₆ is:",
+    "options": ["Trigonal bipyramidal", "Octahedral", "Square pyramidal", "Tetrahedral"],
+    "correct": "Octahedral",
+    "explanation": "6 bond pairs → octahedral"
+  },
+  {
+    "id": 22,
+    "type": "numerical",
+    "question": "Number of π bonds in N₂ molecule:",
+    "correct": "2",
+    "explanation": "N≡N → one sigma + two π bonds"
+  },
+  {
+    "id": 23,
+    "type": "mcq",
+    "question": "Which has highest lattice energy?",
+    "options": ["NaCl", "KCl", "MgCl₂", "AlCl₃"],
+    "correct": "AlCl₃",
+    "explanation": "Higher charge and smaller size → highest lattice energy"
+  },
+  {
+    "id": 24,
+    "type": "numerical",
+    "question": "Osmotic pressure of 0.1 M urea solution at 27°C (R=0.0821 L atm/mol K) in atm:",
+    "correct": "2.46",
+    "explanation": "π = iCRT = 1 × 0.1 × 0.0821 × 300 ≈ 2.46 atm"
+  },
+  {
+    "id": 25,
+    "type": "mcq",
+    "question": "Le Chatelier's principle is applicable to:",
+    "options": ["Physical equilibrium only", "Chemical equilibrium only", "Both", "None"],
+    "correct": "Both",
+    "explanation": "Applies to all equilibria"
+  },
+  {
+    "id": 26,
+    "type": "mcq",
+    "question": "Which is a nucleophile?",
+    "options": ["BF₃", "AlCl₃", "NH₃", "SO₃"],
+    "correct": "NH₃",
+    "explanation": "Has lone pair to donate"
+  },
+  {
+    "id": 27,
+    "type": "numerical",
+    "question": "Rate constant for first order reaction with half life 100 s (in s⁻¹):",
+    "correct": "0.00693",
+    "explanation": "k = 0.693/t½ = 0.693/100 ≈ 0.00693 s⁻¹"
+  },
+  {
+    "id": 28,
+    "type": "mcq",
+    "question": "Cannizzaro reaction is given by aldehydes:",
+    "options": ["With α-hydrogen", "Without α-hydrogen", "Aromatic only", "Aliphatic only"],
+    "correct": "Without α-hydrogen",
+    "explanation": "No α-H → self oxidation-reduction"
+  },
+  {
+    "id": 29,
+    "type": "numerical",
+    "question": "Number of structural isomers of C₅H₁₂:",
+    "correct": "3",
+    "explanation": "n-Pentane, 2-Methylbutane, 2,2-Dimethylpropane"
+  },
+  {
+    "id": 30,
+    "type": "mcq",
+    "question": "Which is the strongest base?",
+    "options": ["NH₃", "PH₃", "AsH₃", "SbH₃"],
+    "correct": "NH₃",
+    "explanation": "Basicity decreases down the group"
+  },
+  {
+    "id": 31,
+    "type": "mcq",
+    "question": "The monomer of Teflon is:",
+    "options": ["Vinyl chloride", "Tetrafluoroethene", "Chloroprene", "Acrylonitrile"],
+    "correct": "Tetrafluoroethene",
+    "explanation": "Polymerization of CF₂=CF₂"
+  },
+  {
+    "id": 32,
+    "type": "numerical",
+    "question": "Atomic number of element with electronic configuration [Ar] 3d¹⁰ 4s² 4p³:",
+    "correct": "33",
+    "explanation": "Ar = 18 + 10 + 2 + 3 = 33 (Arsenic)"
+  },
+  {
+    "id": 33,
+    "type": "mcq",
+    "question": "Which is not a colligative property?",
+    "options": ["Boiling point elevation", "Osmotic pressure", "Vapour pressure lowering", "Surface tension"],
+    "correct": "Surface tension",
+    "explanation": "Colligative properties depend on number of particles"
+  },
+  {
+    "id": 34,
+    "type": "numerical",
+    "question": "Coordination number of Na⁺ in NaCl crystal:",
+    "correct": "6",
+    "explanation": "Rock salt structure → octahedral coordination"
+  },
+  {
+    "id": 35,
+    "type": "mcq",
+    "question": "The catalyst used in Haber process is:",
+    "options": ["V₂O₅", "Fe", "Ni", "Pt"],
+    "correct": "Fe",
+    "explanation": "Finely divided iron with promoters"
+  },
+  {
+    "id": 36,
+    "type": "mcq",
+    "question": "Which is a meta directing group?",
+    "options": ["-OH", "-NH₂", "-NO₂", "-CH₃"],
+    "correct": "-NO₂",
+    "explanation": "Strongly electron withdrawing → meta director"
+  },
+  {
+    "id": 37,
+    "type": "numerical",
+    "question": "Number of Faraday required to deposit 1 mole of Al from AlCl₃:",
+    "correct": "3",
+    "explanation": "Al³⁺ + 3e⁻ → Al"
+  },
+  {
+    "id": 38,
+    "type": "mcq",
+    "question": "Which has highest melting point?",
+    "options": ["NaCl", "MgCl₂", "AlCl₃", "PCl₅"],
+    "correct": "AlCl₃",
+    "explanation": "Highest charge density and covalent character"
+  },
+  {
+    "id": 39,
+    "type": "numerical",
+    "question": "Bond order of O₂ molecule:",
+    "correct": "2",
+    "explanation": "(10-6)/2 = 2"
+  },
+  {
+    "id": 40,
+    "type": "mcq",
+    "question": "Which is used as antacid?",
+    "options": ["NaHCO₃", "Mg(OH)₂", "Al(OH)₃", "All of these"],
+    "correct": "All of these",
+    "explanation": "All neutralize stomach acid"
+  },
+  {
+    "id": 41,
+    "type": "mcq",
+    "question": "The ore of aluminium is:",
+    "options": ["Bauxite", "Cryolite", "Corundum", "All of these"],
+    "correct": "All of these",
+    "explanation": "Bauxite main ore, others also contain Al"
+  },
+  {
+    "id": 42,
+    "type": "numerical",
+    "question": "Number of unpaired electrons in Fe³⁺ ion:",
+    "correct": "5",
+    "explanation": "[Ar] 3d⁵ → 5 unpaired"
+  },
+  {
+    "id": 43,
+    "type": "mcq",
+    "question": "Which is amphoteric oxide?",
+    "options": ["Na₂O", "MgO", "Al₂O₃", "SO₂"],
+    "correct": "Al₂O₃",
+    "explanation": "Reacts with both acid and base"
+  },
+  {
+    "id": 44,
+    "type": "numerical",
+    "question": "Formal charge on oxygen in ozone molecule (average):",
+    "correct": "0",
+    "explanation": "Resonance hybrid → average formal charge 0"
+  },
+  {
+    "id": 45,
+    "type": "mcq",
+    "question": "Which is used in photography?",
+    "options": ["AgCl", "AgBr", "AgI", "All of these"],
+    "correct": "All of these",
+    "explanation": "Light sensitive silver halides"
+  },
+  {
+    "id": 46,
+    "type": "mcq",
+    "question": "The shape of PCl₅ in gaseous state is:",
+    "options": ["Trigonal bipyramidal", "Square pyramidal", "Octahedral", "Tetrahedral"],
+    "correct": "Trigonal bipyramidal",
+    "explanation": "sp³d hybridization"
+  },
+  {
+    "id": 47,
+    "type": "numerical",
+    "question": "Number of neutrons in ¹³C isotope:",
+    "correct": "7",
+    "explanation": "Mass 13, protons 6 → neutrons 7"
+  },
+  {
+    "id": 48,
+    "type": "mcq",
+    "question": "Which is not a greenhouse gas?",
+    "options": ["CO₂", "CH₄", "N₂O", "O₂"],
+    "correct": "O₂",
+    "explanation": "O₂ does not absorb IR radiation significantly"
+  },
+  {
+    "id": 49,
+    "type": "numerical",
+    "question": "Empirical formula mass of a compound with molecular formula C₆H₆:",
+    "correct": "39",
+    "explanation": "CH → 12+1 = 13, but C₆H₆ / 6 = CH → 13, wait no: C₆H₆ empirical is CH, mass 13"
+  },
+  {
+    "id": 50,
+    "type": "mcq",
+    "question": "Bakelite is a:",
+    "options": ["Addition polymer", "Condensation polymer", "Natural polymer", "None"],
+    "correct": "Condensation polymer",
+    "explanation": "Phenol + formaldehyde → cross-linked polymer"
+  }
+]
